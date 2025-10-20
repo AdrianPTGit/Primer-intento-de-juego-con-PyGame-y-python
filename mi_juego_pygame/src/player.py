@@ -15,6 +15,9 @@ class Player(pygame.sprite.Sprite):
         self.rect.center = (x, y)  # Posiciona el centro del rectángulo en las coordenadas (x, y) que recibimos
         self.velocidad = 5  # Velocidad de movimiento del jugador en píxeles por frame
 
+        self.puntos = 0  # <-- NUEVO atributo de puntuación
+
+
     # Método update se llama automáticamente cada frame cuando usamos un grupo de sprites
     def update(self):
         keys = pygame.key.get_pressed()  # Obtiene un diccionario con el estado de todas las teclas

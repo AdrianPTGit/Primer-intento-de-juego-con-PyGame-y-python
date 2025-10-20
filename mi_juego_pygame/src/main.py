@@ -1,4 +1,6 @@
 import pygame, sys
+from pygame import font
+
 from settings import *
 from player import Player
 from Enemigo import Enemigo
@@ -15,13 +17,14 @@ if not os.path.exists(FONDO_PATH):
     print("⚠️ No se encontró el fondo en:", FONDO_PATH  )
 FONDO_PANTALLA_JUEGO = pygame.image.load(FONDO_PATH)
 FONDO_PANTALLA_JUEGO = pygame.transform.scale(FONDO_PANTALLA_JUEGO, (WIDTH, HEIGHT))
-
+# --- Fuente para el texto puntos ---
+font = pygame.font.Font(None, 36)  # Fuente para el texto
 # --- Crear jugador ---
 jugador = Player(WIDTH // 2, HEIGHT - 60)
 
 # --- Crear grupo de enemigos ---
 enemigos = pygame.sprite.Group()
-for i in range(3):
+for i in range(10):
     enemigo = Enemigo(100 + i * 200, 100)
     enemigos.add(enemigo)
 
@@ -60,13 +63,20 @@ while running:
     # 2️⃣ Bala impacta enemigo
     impactos = pygame.sprite.groupcollide(enemigos, balas, True, True)
     if impactos:
-        print("🔥 ¡Enemigo destruido!")
+        for enemigo in impactos:
+            jugador.puntos += 10  # 🔥 suma 10 puntos por enemigo destruido
+        print(f"🔥 ¡Enemigo destruido! Puntos: {jugador.puntos}")
+
+
 
     # --- Dibujar en pantalla ---
     pantalla.blit(FONDO_PANTALLA_JUEGO, (0, 0))
     todos_sprites.draw(pantalla)
     balas.draw(pantalla)
+    # --- Dibujar puntuación ---
 
+    texto_puntos = font.render(f"Puntos: {jugador.puntos}", True, (255, 255, 255))
+    pantalla.blit(texto_puntos, (10, 10))
     pygame.display.flip()
 
 pygame.quit()
