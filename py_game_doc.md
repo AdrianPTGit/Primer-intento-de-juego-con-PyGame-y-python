@@ -119,3 +119,54 @@ venv\Scripts\activate
 pip install pygame
 echo pygame > requirements.txt
 ```
+
+
+# nombres juego
+
+🎯 Clásicos / Retro
+
+Space Blaster
+
+Alien Invaders
+
+Galactic Defender
+
+Star Shooter
+
+Cosmic Attack
+
+⚡ Impactantes / Acción
+
+Astro Annihilator
+
+Alien Exterminator
+
+Zero Gravity Assault
+
+Meteor Strike
+
+Orbit Obliterator
+
+🛸 Creativos / Divertidos
+
+Zap! Alien Wars
+
+Martian Madness
+
+Laser vs Aliens
+
+Space Kaboom!
+
+Cosmo Chaos
+
+🌌 Épicos / Aventureros
+
+Galaxion: The Final Battle
+
+Star Frontier
+
+Void Raiders
+
+Celestial Clash
+
+Nebula Nemesis

@@ -7,7 +7,7 @@ from Enemigo import Enemigo
 
 pygame.init()
 pantalla = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Mi primer juego estructurado")
+pygame.display.set_caption("Cosmic Attack")
 clock = pygame.time.Clock()
 
 # --- Cargar fondo (asegúrate de hacerlo aquí, no en settings.py) ---
@@ -46,7 +46,7 @@ def pantalla_inicio():
         pantalla.fill((0, 0, 0))  # Fondo negro
 
         # Dibujar título
-        titulo = font_titulo.render("MI JUEGO PYGAME", True, (255, 255, 255))
+        titulo = font_titulo.render("Cosmic Attack", True, (255, 255, 255))
         pantalla.blit(titulo, (WIDTH // 2 - titulo.get_width() // 2, 150))
 
         # Dibujar opciones
