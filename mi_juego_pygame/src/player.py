@@ -14,8 +14,8 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()  # Obtiene un rectángulo que delimita la superficie (útil para colisiones y posición)
         self.rect.center = (x, y)  # Posiciona el centro del rectángulo en las coordenadas (x, y) que recibimos
         self.velocidad = 5  # Velocidad de movimiento del jugador en píxeles por frame
-
         self.puntos = 0  # <-- NUEVO atributo de puntuación
+        self.vidas = 3  # Vidas iniciales
 
 
     # Método update se llama automáticamente cada frame cuando usamos un grupo de sprites

@@ -3,8 +3,8 @@ import os
 # Configuración general del juego
 
 # Dimensiones de la ventana
-WIDTH = 800
-HEIGHT = 600
+WIDTH = 1280
+HEIGHT = 720
 
 # FPS
 FPS = 60

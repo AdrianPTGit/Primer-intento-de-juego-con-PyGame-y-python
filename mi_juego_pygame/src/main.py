@@ -55,10 +55,17 @@ while running:
 
     # --- Detección de colisiones ---
 
-    # 1️⃣ Jugador colisiona con enemigo
-    if pygame.sprite.spritecollide(jugador, enemigos, False):
-        print("💥 ¡Jugador tocado por enemigo!")
-        running = False  # o podrías restar vida, reiniciar, etc.
+    # Jugador colisiona con enemigo
+    colision = pygame.sprite.spritecollide(jugador, enemigos, False)
+    if colision:
+        jugador.vidas -= 1  # resta una vida
+        print(f"¡Jugador tocado! Vidas: {jugador.vidas}")
+        if jugador.vidas <= 0:
+            print("¡Juego terminado!")
+            running = False  # termina el juego
+        else:
+            # opcional: reposicionar jugador para no perder varias vidas de golpe
+            jugador.rect.center = (WIDTH // 2, HEIGHT - 60)
 
     # 2️⃣ Bala impacta enemigo
     impactos = pygame.sprite.groupcollide(enemigos, balas, True, True)
@@ -73,10 +80,16 @@ while running:
     pantalla.blit(FONDO_PANTALLA_JUEGO, (0, 0))
     todos_sprites.draw(pantalla)
     balas.draw(pantalla)
+
     # --- Dibujar puntuación ---
 
     texto_puntos = font.render(f"Puntos: {jugador.puntos}", True, (255, 255, 255))
     pantalla.blit(texto_puntos, (10, 10))
+
+    # --- Dibujar vidas ---
+
+    texto_puntos = font.render(f"Vidas: {jugador.vidas}", True, (255, 255, 255))
+    pantalla.blit(texto_puntos, (200, 10))
     pygame.display.flip()
 
 pygame.quit()
