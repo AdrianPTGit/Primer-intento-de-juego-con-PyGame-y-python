@@ -36,6 +36,45 @@ todos_sprites.add(enemigos)
 # --- Grupo de balas ---
 balas = pygame.sprite.Group()
 
+# --- Función de pantalla de inicio ---
+def pantalla_inicio():
+    font_titulo = pygame.font.Font(None, 72)
+    font_opcion = pygame.font.Font(None, 48)
+
+    running_inicio = True
+    while running_inicio:
+        pantalla.fill((0, 0, 0))  # Fondo negro
+
+        # Dibujar título
+        titulo = font_titulo.render("MI JUEGO PYGAME", True, (255, 255, 255))
+        pantalla.blit(titulo, (WIDTH // 2 - titulo.get_width() // 2, 150))
+
+        # Dibujar opciones
+        jugar_texto = font_opcion.render("JUGAR (J)", True, (0, 255, 0))
+        salir_texto = font_opcion.render("SALIR (S)", True, (255, 0, 0))
+        pantalla.blit(jugar_texto, (WIDTH // 2 - jugar_texto.get_width() // 2, 300))
+        pantalla.blit(salir_texto, (WIDTH // 2 - salir_texto.get_width() // 2, 400))
+
+        pygame.display.flip()
+        # Eventos
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_j:  # Jugar
+                    running_inicio = False
+                elif event.key == pygame.K_s:  # Salir
+                    pygame.quit()
+                    sys.exit()
+
+
+
+    # --- Aquí empieza tu código del juego ---
+    # Crear jugador, enemigos, grupos, bucle principal...
+
+# --- Llamar a la pantalla de inicio antes de iniciar el juego ---
+pantalla_inicio()
 # --- Bucle principal ---
 running = True
 while running:
