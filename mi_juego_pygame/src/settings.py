@@ -18,4 +18,4 @@ BLUE = (0, 0, 255)
 
 # Ruta de la imagen de fondo
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FONDO_PANTALLA_JUEGO = pygame.image.load(os.path.join(BASE_DIR, "assets", "images", "image5.jpg"))
+FONDO_PATH = os.path.join(BASE_DIR, "assets", "images", "image5.jpg")

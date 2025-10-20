@@ -1,5 +1,7 @@
-import pygame  # Importa la librería Pygame para manejar gráficos, sprites y eventos de teclado
+import pygame
+# Importa la librería Pygame para manejar gráficos, sprites y eventos de teclado
 from bala import Bala
+from settings import *
 
 # Definimos la clase Player, que hereda de pygame.sprite.Sprite
 # Esto permite que el jugador sea un "sprite" y pueda ser manejado por grupos de sprites
@@ -24,9 +26,20 @@ class Player(pygame.sprite.Sprite):
             self.rect.y -= self.velocidad  # Mueve el rectángulo del jugador hacia arriba
         if keys[pygame.K_DOWN]:  # Si la tecla de flecha abajo está presionada
             self.rect.y += self.velocidad  # Mueve el rectángulo del jugador hacia abajo
-            
+
+            # --- Limitar movimiento a los bordes de la pantalla ---
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT
+
     # Método para disparar
     def disparar(self, grupo_balas):
         # Crea una bala en la posición superior del jugador
         bala = Bala(self.rect.centerx, self.rect.top)
         grupo_balas.add(bala)
+
